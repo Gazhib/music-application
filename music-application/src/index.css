@@ -38,7 +38,8 @@ body {
   font-size: 45px;
   cursor: pointer;
 }
-.sphere{
+
+.sphere {
   color: crimson;
 }
 
@@ -61,26 +62,91 @@ body {
   font-size: 30px;
   overflow: hidden;
 }
-.Sidebar.open{
+
+.Sidebar.open {
   width: 260px;
 }
-.Sidebar .inner{
+
+.Sidebar .inner {
   position: absolute;
   width: 260px;
   left: 0;
 }
-.SidebarButton{
+
+.SidebarButton {
   font-size: 20px;
   place-items: center;
   display: flex;
 }
-.SidebarButton:hover{
+
+.SidebarButton:hover {
   border-radius: 0px;
 }
-.button-container{
+
+.button-container {
   display: grid;
   gap: 2px;
 }
-.Sidebar p{
+
+.Sidebar p {
   padding-left: 10px;
+}
+
+
+/* Modal */
+.modal {
+  background-color: #4f4f4f;
+  border: none;
+  border-radius: 10px;
+  width: 400px;
+  height: 500px;
+  
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form p {
+  display: flex;
+  align-items: center;
+
+}
+
+.form label {
+  color: white;
+  padding-right: 20px;
+  flex: 1;
+  text-align: left;
+}
+
+.form input {
+  flex: 2;
+  border: none;
+  border-radius: 5px;
+  height: 20px;
+}
+
+.modalButton {
+  background-color: #848484;
+  border: none;
+  color: aliceblue;
+  margin-left: 300px;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.modalButton:hover{
+  background-color: #1f1f1f;
+}
+
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+.warningText{
+  color: rgb(188, 41, 41);
+  font-size: 13px;
+  padding-left: 150px;
 }
