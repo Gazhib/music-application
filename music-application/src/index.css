@@ -1,0 +1,46 @@
+body {
+  background-color: #2D2D2D;
+}
+
+
+/*Header*/
+.header {
+  background-color: #1f1f1f;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.button {
+  background-color: #1f1f1f;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-radius: 50px;
+  background-color: #4f4f4f;
+}
+
+.companyButton {
+
+  background-color: #1f1f1f;
+  border: none;
+  color: white;
+  font-size: 45px;
+  cursor: pointer;
+
+}
+
+.icon {
+  width: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
