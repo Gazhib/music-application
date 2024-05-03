@@ -17,8 +17,6 @@ const RegistrationModal = forwardRef(function RegistrationModal(props, ref) {
     } else {
       const newData = { ...data };
       delete newData.confirmPassword;
-      console.log(newData);
-
       const result = await FetchingData(newData);
       if (result === "This email is already registered on this website.") {
         setText("This email is already registered on this website.");

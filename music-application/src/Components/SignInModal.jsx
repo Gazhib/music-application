@@ -1,7 +1,7 @@
 import { forwardRef, useRef, useImperativeHandle, useState } from "react";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store";
-import { FetchingData } from "../fetching";
+import { FetchingLogin } from "../fetching";
 const SignInModal = forwardRef(function SignInModal(props, ref) {
   const dispatch = useDispatch();
   const modal = useRef();
@@ -11,12 +11,12 @@ const SignInModal = forwardRef(function SignInModal(props, ref) {
     const fd = new FormData(event.target);
     const data = Object.fromEntries(fd.entries());
 
-    const result = await FetchingData(data);
-    if (result === "Email or password is not correct") {
-      setText("Email or password is not correct");
+    const result = await FetchingLogin(data)
+    if (result === "Successfully entered") {
+      dispatch(authActions.changeAuth())
+      modal.current.close()
     } else {
-      dispatch(authActions.changeAuth());
-      modal.current.close();
+      setText(result)
     }
   }
   useImperativeHandle(ref, () => {
