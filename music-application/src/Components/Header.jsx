@@ -1,22 +1,22 @@
+/* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from "react-redux";
-import { useRef } from "react";
-import { uiActions } from "../store/index";
-import RegistrationModal from "./RegistrationModal";
+import { uiActions, authActions } from "../store/index";
 
+import logoutIcon from "../assets/logout.png";
 import menuIcon from "../assets/menu.png";
 import userIcon from "../assets/user.png";
-export default function Header() {
+
+export default function Header({ registration }) {
   const isAuth = useSelector((state) => state.auth.isAuthorized);
   const dispatch = useDispatch();
-  const regModal = useRef();
 
   function handleSidebar() {
     dispatch(uiActions.sideBar());
   }
-  function registration() {
-    regModal.current.open();
+
+  function handleLogOut() {
+    dispatch(authActions.changeAuth());
   }
-  function account() {}
   return (
     <>
       <header className="header">
@@ -26,11 +26,28 @@ export default function Header() {
         <button className="companyButton">
           SONG<span className="sphere">SPHERE</span>
         </button>
-        <button onClick={isAuth ? account : registration} className="button">
-          {isAuth ? <img className="icon" src={userIcon} /> : "Registration"}
-        </button>
+        {isAuth ? (
+          <div className="dropdown">
+            <button className="button">
+              <img className="icon" src={userIcon} />
+            </button>
+            <div className="menu">
+              <button className="menuButtons" onClick={handleLogOut}>
+                <img className="logoutIcon" src={logoutIcon} />
+                <p>Log out</p>
+              </button>
+              <button className="menuButtons" onClick={handleLogOut}>
+                <img className="logoutIcon" src={logoutIcon} />
+                <p>Log out</p>
+              </button>
+            </div>
+          </div>
+        ) : (
+          <button onClick={registration} className="button">
+            Registration <br /> or <br /> Authrorization
+          </button>
+        )}
       </header>
-      <RegistrationModal ref={regModal} />
     </>
   );
 }
