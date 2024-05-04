@@ -2,9 +2,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { uiActions, authActions } from "../store/index";
 
-import logoutIcon from "../assets/logout.png";
-import menuIcon from "../assets/menu.png";
-import userIcon from "../assets/user.png";
+import logoutIcon from "../assets/icons/logout.png";
+import menuIcon from "../assets/icons/menu.png";
+import userIcon from "../assets/icons/user.png";
 
 export default function Header({ registration }) {
   const isAuth = useSelector((state) => state.auth.isAuthorized);
@@ -36,10 +36,7 @@ export default function Header({ registration }) {
                 <img className="logoutIcon" src={logoutIcon} />
                 <p>Log out</p>
               </button>
-              <button className="menuButtons" onClick={handleLogOut}>
-                <img className="logoutIcon" src={logoutIcon} />
-                <p>Log out</p>
-              </button>
+
             </div>
           </div>
         ) : (

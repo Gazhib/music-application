@@ -2,6 +2,9 @@ body {
   background-color: #2D2D2D;
 }
 
+.App {
+  display: flex;
+}
 
 /*Header*/
 .header {
@@ -48,15 +51,15 @@ body {
 }
 
 /*Header dropdown */
-.dropdown{
+.dropdown {
   position: relative;
   display: grid;
   place-items: center;
   height: 72px;
-  
+
 }
 
-.dropdown button::before{
+.dropdown button::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -69,7 +72,8 @@ body {
   opacity: 0;
   transition: 0.2s;
 }
-.menu{
+
+.menu {
   overflow-x: hidden;
   overflow-y: auto;
   position: absolute;
@@ -85,25 +89,30 @@ body {
   visibility: hidden;
   transition: 0.3s;
   appearance: none;
-  
+
 }
-.dropdown:hover button::before{
+
+.dropdown:hover button::before {
   scale: 1;
   opacity: 1;
 }
-.dropdown:hover .menu{
+
+.dropdown:hover .menu {
   opacity: 1;
   visibility: visible;
   translate: 0;
-  
+
 }
-.menu p{
+
+.menu p {
   color: white;
 }
-.logoutIcon{
+
+.logoutIcon {
   width: 24px;
 }
-.menuButtons{
+
+.menuButtons {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -123,6 +132,7 @@ body {
   transition: 0.4s width;
   font-size: 30px;
   overflow: hidden;
+  z-index: 999;
 }
 
 .Sidebar.open {
@@ -198,13 +208,16 @@ body {
   background-color: #fff;
   color: #333;
 }
-.form input::placeholder{
+
+.form input::placeholder {
   color: #bbbbbb;
   font-size: 17px;
 }
-.form input:focus{
+
+.form input:focus {
   font-size: 17px;
 }
+
 .modalButton {
   background-color: #848484;
   border: none;
@@ -216,19 +229,22 @@ body {
   flex: 1;
   font-size: 17px;
 }
-.modalButton:hover{
+
+.modalButton:hover {
   background-color: #1f1f1f;
 }
 
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.55);
 }
-.warningText{
+
+.warningText {
   color: rgb(188, 41, 41);
   font-size: 13px;
   padding-left: 150px;
 }
-.suggestion{
+
+.suggestion {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -236,18 +252,52 @@ body {
   color: white;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.modalButton.sign{
+
+.modalButton.sign {
   margin-left: 0;
   margin-top: 5px;
   margin-bottom: 10px
 }
 
 /* SignIn modal */
-.form.signin{
+.form.signin {
   margin-top: 50px;
 }
-.LogIn{
+
+.LogIn {
   font-size: 30px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: bold;
+}
+
+.NewsPage {
+  background-color: #1f1f1f;
+
+  margin: 100px;
+  margin-left: 175px;
+}
+
+.news {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 50px;
+  padding: 50px;
+}
+.news li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+.news li img{
+  width: 450px;
+}
+.news li p{
+  width: 450px;
 }

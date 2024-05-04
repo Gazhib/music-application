@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import homeIcon from "../assets/home.png";
-import searchIcon from "../assets/search.png"
+import homeIcon from "../assets/icons/home.png";
+import searchIcon from "../assets/icons/search.png"
 export default function Sidebar() {
   const isOpen = useSelector((state) => state.ui.sideBar);
   return (
