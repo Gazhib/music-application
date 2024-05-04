@@ -270,11 +270,17 @@ body {
   font-weight: bold;
 }
 
+/* NewsPage */
 .NewsPage {
   background-color: #1f1f1f;
-
+  display: flex;
   margin: 100px;
   margin-left: 175px;
+  transition: 0.4s;
+}
+
+.NewsPage.side {
+  margin-left: 275px;
 }
 
 .news {
@@ -285,19 +291,109 @@ body {
   gap: 50px;
   padding: 50px;
 }
-.news li{
+
+@media (max-width: 1300px) {
+  .news {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .news {
+    grid-template-columns: 1fr;
+  }
+}
+
+.news li {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-a{
+
+a {
   color: white;
   text-decoration: none;
 }
-.news li img{
+
+.news li img {
+  min-width: 100px;
+  width: 400px;
+}
+
+.news li p {
+  min-width: 100px;
   width: 450px;
 }
-.news li p{
-  width: 450px;
+
+@media (max-width: 768px) {
+  .news li img {
+    width: 320px
+  }
+}
+
+@media (max-width: 480px) {
+  .news li img {
+    width: 240px
+  }
+}
+
+
+/* SearchPage */
+
+.SearchPage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 100px;
+  margin-left: 175px;
+  transition: 0.4s;
+  color: white;
+}
+
+.searchInput {
+  flex: 1;
+  position: absolute;
+  margin: 75px;
+  margin-left: 425px;
+}
+
+.searchInput input {
+  background-color: transparent;
+  border-radius: 15px;
+  height: 20px;
+  width: 700px;
+  padding: 20px;
+  color: white;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.searchInput input::placeholder {
+  color: white;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.GenreList {
+  position: absolute;
+  background-color: #1f1f1f;
+  padding: 30px;
+  margin-top: 400px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  list-style: none;
+  text-align: center;
+}
+.GenreList button{
+  background-color: #2D2D2D;
+  border: none;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-size: 15px;
+}
+.GenreList button:hover{
+  background-color: #525252;
 }

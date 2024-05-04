@@ -2,6 +2,7 @@ import picture1 from "../assets/dummy_pictures/music1.webp";
 import picture3 from "../assets/dummy_pictures/music3.webp";
 import picture4 from "../assets/dummy_pictures/music4.webp";
 import picture5 from "../assets/dummy_pictures/music5.webp";
+import {useSelector} from "react-redux";
 const dummy_data = [
   {
     title:
@@ -30,8 +31,9 @@ const dummy_data = [
   },
 ];
 export default function NewsPage() {
+  const isSideBar = useSelector((state) => state.ui.sideBar);
   return (
-    <div className="NewsPage">
+    <div className={`NewsPage ${isSideBar ? "side" : ""}`}>
       <ul className="news">
         {dummy_data.map((data) => {
           return (
