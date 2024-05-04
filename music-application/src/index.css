@@ -401,6 +401,7 @@ a {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: white;
   font-size: 15px;
+  cursor: pointer;
 }
 
 .GenreList button:hover {
@@ -425,11 +426,11 @@ a {
 .PlaylistList {
   position: absolute;
   background-color: #1f1f1f;
-  padding: 30px;
+  padding: 20px;
   margin-top: 200px;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 30px;
+  gap: 20px;
   list-style: none;
   text-align: center;
 }
@@ -439,4 +440,143 @@ a {
   line-height: 0px;
   border-radius: 10px;
   font-size: 70px;
+}
+.PlaylistList button {
+  background-color: #2D2D2D;
+  border: none;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+.PlaylistList button:hover {
+  background-color: #525252;
+}
+
+/* PlaylistPage */
+
+.PlaylistPage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 40px 0 130px;
+  height: 100%;
+  transition: 0.4s;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+.PlaylistContainer {
+  position: absolute;
+  background-color: #1f1f1f;
+  padding: 20px;
+  margin-top: 200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  list-style: none;
+  text-align: center;
+}
+
+.PlaylistContainer img{
+  width: 320px;
+}
+
+.PlaylistContainer button {
+  background-color: #2D2D2D;
+  border: none;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+.PlaylistContainer button:hover {
+  background-color: #525252;
+}
+
+/* Music Page */
+.MusicPage {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 100px 40px 0 130px;
+  height: 100%;
+  transition: 0.4s;
+  color: white;
+  width: 100%;
+}
+.coverContainer{
+  background-color: #1e1e1e;
+  width: 350px;
+  height: 350px;
+}
+.MusicPage img{
+  margin-top: 15px;
+  margin-left: 15px;
+  width: 320px;
+}
+
+.infoMusic{
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  width: 100%;
+}
+
+.infoMusic h3{
+  margin-left: 10px;
+}
+.artists{
+  color: chartreuse;
+}
+.infoMusic h2{
+  color: crimson;
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
+.audioPlayer{
+  width: 100%;
+  background-color: #1e1e1e;
+}
+
+.play-pause{
+  padding: 15px;
+  background-color: rgb(87, 84, 84);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 70px;
+}
+
+.seek-bar {
+  -webkit-appearance: none;
+  width: 85%;
+  height: 8px; 
+  background-color: #2D2D2D;
+  border-radius: 4px;
+  outline: none;
+}
+
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none; 
+  width: 16px; 
+  height: 16px;
+  background-color: #FFFFFF; 
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.seek-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  cursor: pointer;
 }

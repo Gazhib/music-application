@@ -9,6 +9,7 @@ export default function SearchPage() {
 
   async function handleGenres() {
     const token = await APIController.getToken();
+    dispatch(genreActions.acquireToken(token))
     const genreList = await APIController.getGenres(token);
     setGenres(genreList);
   }

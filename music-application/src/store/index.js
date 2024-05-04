@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import authSlice from "./Authentication"
 import pageSlice from "./ChangePage"
 import uiSlice from "./Ui"
-import genreSlice from "./Genre"
+import genreSlice from "./HELPAPI"
 
 const store = configureStore({
   reducer: {auth: authSlice.reducer, ui: uiSlice.reducer, page: pageSlice.reducer, genre: genreSlice.reducer}
