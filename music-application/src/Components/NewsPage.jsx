@@ -1,3 +1,4 @@
+import { Fade } from "react-awesome-reveal";
 import picture1 from "../assets/dummy_pictures/music1.webp";
 import picture3 from "../assets/dummy_pictures/music3.webp";
 import picture4 from "../assets/dummy_pictures/music4.webp";
@@ -32,20 +33,22 @@ const dummy_data = [
 export default function NewsPage() {
   return (
     <div className="NewsPage">
-      <ul className="news">
-        {dummy_data.map((data) => {
-          return (
-            <li key={data.title}>
-              <a href={data.link}>
-                <img src={data.picture} />
-              </a>
-              <a href={data.link}>
-                <p>{data.title}</p>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
+      <Fade>
+        <ul className="news">
+          {dummy_data.map((data) => {
+            return (
+              <li key={data.title}>
+                <a href={data.link}>
+                  <img src={data.picture} />
+                </a>
+                <a href={data.link}>
+                  <p>{data.title}</p>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </Fade>
     </div>
   );
 }
