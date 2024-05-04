@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { musicActions, pageActions } from "../store";
-import { Fade } from "react-awesome-reveal";
 import APIController from "../../APIwork";
+import { useDispatch } from "react-redux";
+import { pageActions, genreActions } from "../store";
+import { Fade } from "react-awesome-reveal";
 export default function SearchPage() {
   const [genres, setGenres] = useState();
   const dispatch = useDispatch();
@@ -16,11 +16,9 @@ export default function SearchPage() {
   async function handleChoosing(genreName, genreId) {
     const token = await APIController.getToken();
     const playlist = await APIController.getPlaylistByGenre(token, genreId);
-    dispatch(
-      musicActions.changeGenre({ genre: genreName, genreArray: playlist })
-    );
-    dispatch(pageActions.changePage("genre"));
-    console.log(playlist);
+    dispatch(genreActions.changeGenre({genre: genreName, genreArray: playlist}))
+    dispatch(pageActions.changePage("genre"))
+    setGenres(playlist);
   }
 
   useEffect(() => {
@@ -42,9 +40,7 @@ export default function SearchPage() {
               {genres.map((genre) => {
                 return (
                   <li key={genre.id}>
-                    <button
-                      onClick={() => handleChoosing(genre.name, genre.id)}
-                    >
+                    <button onClick={() => handleChoosing(genre.name, genre.id)}>
                       <img src={genre.icons[0].url} />
                       <p>{genre.name}</p>
                     </button>

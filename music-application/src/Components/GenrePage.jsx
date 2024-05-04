@@ -5,11 +5,9 @@ export default function GenrePage() {
     useSelector((state) => state.genre);
   return (
     <div className="GenrePage">
-      <Fade>
-        <div className="genreName">
-          <p className="name">{genreName}</p>
-        </div>
-      </Fade>
+      <div className="genreName">
+        <p className="name">{genreName}</p>
+      </div>
       <Fade>
         <ul className="PlaylistList">
           {playlists.map((playlist) => {

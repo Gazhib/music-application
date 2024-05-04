@@ -9,7 +9,7 @@ const store = configureStore({
   reducer: {auth: authSlice.reducer, ui: uiSlice.reducer, page: pageSlice.reducer, genre: genreSlice.reducer}
 })
 
-export const musicActions = genreSlice.actions
+export const genreActions = genreSlice.actions
 export const pageActions = pageSlice.actions
 export const authActions = authSlice.actions
 export const uiActions = uiSlice.actions

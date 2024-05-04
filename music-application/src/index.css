@@ -274,6 +274,7 @@ body {
 .NewsPage {
   background-color: #1f1f1f;
   display: flex;
+  display: flex;
   margin: 100px;
   margin-left: 175px;
   transition: 0.4s;
@@ -281,7 +282,9 @@ body {
 
 .NewsPage.side {
   margin-left: 275px;
+  transition: 0.4s;
 }
+
 
 .news {
   list-style: none;
@@ -291,6 +294,8 @@ body {
   gap: 50px;
   padding: 50px;
 }
+
+
 
 @media (max-width: 1300px) {
   .news {
@@ -311,6 +316,7 @@ body {
   text-align: center;
 }
 
+
 a {
   color: white;
   text-decoration: none;
@@ -320,6 +326,7 @@ a {
   min-width: 100px;
   width: 400px;
 }
+
 
 .news li p {
   min-width: 100px;
@@ -433,4 +440,3 @@ a {
   border-radius: 10px;
   font-size: 70px;
 }
-
