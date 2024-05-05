@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {genre: null, genreArray: null, token: null, tracks: null, track: null}
+const initialState = {genre: null, genreArray: null, token: null, tracks: null, tracksName: null, track: null}
 
-const genreSlice = createSlice({
+const apiSlice = createSlice({
   name: "genre",
   initialState,
   reducers:{
@@ -16,9 +16,12 @@ const genreSlice = createSlice({
     acquireTracks(state, action){
       state.tracks = action.payload
     },
+    acquireTracksName(state, action){
+      state.tracksName = action.payload
+    },
     acquireTrack(state, action){
       state.track = action.payload
     }
   }
 })
-export default genreSlice
+export default apiSlice

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = {sideBar: false}
+const initialState = {sideBar: false, isReg: false}
 
 const uiSlice = createSlice({
   name: 'ui',
@@ -7,6 +7,9 @@ const uiSlice = createSlice({
   reducers: {
     sideBar(state){
       state.sideBar = !state.sideBar
+    },
+    modal(state){
+      state.isReg = !state.isReg
     }
   }
 })

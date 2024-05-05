@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import APIController from "../../APIwork";
-import { useDispatch } from "react-redux";
-import { pageActions, genreActions } from "../store";
+import { useDispatch, useSelector } from "react-redux";
+import { pageActions, apiActions } from "../store";
 import { Fade } from "react-awesome-reveal";
 export default function SearchPage() {
   const [genres, setGenres] = useState();
   const dispatch = useDispatch();
-
+  const token = useSelector(state => state.api.token)
   async function handleGenres() {
-    const token = await APIController.getToken();
-    dispatch(genreActions.acquireToken(token))
     const genreList = await APIController.getGenres(token);
     setGenres(genreList);
   }
@@ -17,8 +15,8 @@ export default function SearchPage() {
   async function handleChoosing(genreName, genreId) {
     const token = await APIController.getToken();
     const playlist = await APIController.getPlaylistByGenre(token, genreId);
-    dispatch(genreActions.changeGenre({genre: genreName, genreArray: playlist}))
-    dispatch(pageActions.changePage("genre"))
+    dispatch(apiActions.changeGenre({genre: genreName, genreArray: playlist}))
+    dispatch(pageActions.changePage("categories"))
     setGenres(playlist);
   }
 

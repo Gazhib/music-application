@@ -5,7 +5,7 @@ import { useRef } from "react";
 import NewsPage from "./Components/NewsPage";
 import { useSelector } from "react-redux";
 import SearchPage from "./Components/SearchPage";
-import GenrePage from "./Components/GenrePage";
+import CategoriesPage from "./Components/CategoriesPage";
 import PlaylistPage from "./Components/PlaylistPage";
 import MusicPage from "./Components/MusicPage";
 function App() {
@@ -20,8 +20,8 @@ function App() {
     text = <NewsPage />
   } else if (page === "search"){
     text = <SearchPage />
-  } else if (page === "genre"){
-    text = <GenrePage />
+  } else if (page === "categories"){
+    text = <CategoriesPage />
   } else if (page === "playlist"){
     text = <PlaylistPage />
   } else if (page === "music"){

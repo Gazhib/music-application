@@ -18,7 +18,7 @@ const APIController = (function () {
 
   const _getGenres = async (token) => {
     const result = await fetch(
-      `https://api.spotify.com/v1/browse/categories?locale=sv_US`,
+      `https://api.spotify.com/v1/browse/categories`,
       {
         method: "GET",
         headers: { Authorization: "Bearer " + token },
@@ -45,7 +45,6 @@ const APIController = (function () {
   };
 
   const _getTracks = async (token, tracksEndPoint) => {
-
     const result = await fetch(`${tracksEndPoint}`, {
       method: "GET",
       headers: { Authorization: "Bearer " + token },
@@ -64,7 +63,15 @@ const APIController = (function () {
     const data = await result.json();
     return data;
   };
+  const _getNewReleases = async (token) => {
+    const result = await fetch(`https://api.spotify.com/v1/browse/categories`, {
+      method: "GET",
+      headers: { Authorization: "Bearer " + token },
+    });
 
+    const data = await result.json();
+    return data;
+  };
   return {
     getToken() {
       return _getToken();
@@ -80,6 +87,9 @@ const APIController = (function () {
     },
     getTrack(token, trackEndPoint) {
       return _getTrack(token, trackEndPoint);
+    },
+    getNewReleases(token) {
+      return _getNewReleases(token);
     },
   };
 })();

@@ -1,19 +1,32 @@
 import { Fade } from "react-awesome-reveal";
 import { useSelector, useDispatch } from "react-redux";
-import { pageActions, genreActions } from "../store";
+import backIcon from "../assets/icons/back.png";
+import { pageActions, apiActions } from "../store";
 import APIController from "../../APIwork";
 export default function PlaylistPage() {
-  const playlist = useSelector((state) => state.genre.tracks);
-  const token = useSelector(state => state.genre.token)
+  const playlist = useSelector((state) => state.api.tracks);
+  const token = useSelector((state) => state.api.token);
+  const playlistName = useSelector((state) => state.api.tracksName);
   const dispatch = useDispatch();
-  async function handleChoosing(trackEndPoint){
-    const result = await APIController.getTrack(token, trackEndPoint)
-    dispatch(pageActions.changePage("music"))
-    dispatch(genreActions.acquireTrack(result))
+  async function handleChoosing(trackEndPoint) {
+    const result = await APIController.getTrack(token, trackEndPoint);
+    dispatch(pageActions.changePage("music"));
+    dispatch(apiActions.acquireTrack(result));
+  }
+
+  function goBack() {
+    dispatch(pageActions.changePage("categories"));
   }
   return (
     <div className="PlaylistPage">
+      <div className="playlistName">
+        <p className="name">{playlistName}</p>
+      </div>
       <div className="imageContainer"></div>
+      <button onClick={goBack} className="backButton">
+        <img className="backIcon" src={backIcon} />
+        <span>Back</span>
+      </button>
       <Fade>
         <ul className="PlaylistContainer">
           {playlist.tracks.items.map((track) => {
