@@ -57,7 +57,7 @@ app.post("/check", (req, res) => {
     }
 
     let json = JSON.parse(data);
-    let user = json.find(user => user.hasOwnProperty(email));
+    let user = json.find((user) => user.hasOwnProperty(email));
     if (user) {
       if (user[email] === password) {
         return res.json({ message: "Successfully entered" });
@@ -65,11 +65,78 @@ app.post("/check", (req, res) => {
         return res.json({ message: "Incorrect Password" });
       }
     } else {
-      return res.json({message: "Incorrect E-mail address"})
+      return res.json({ message: "Incorrect E-mail address" });
     }
   });
 });
 
+app.post("/comment", (req, res) => {
+  const entries = Object.entries(req.body);
+
+  if (entries.length === 0) {
+    return res.status(400).json({ error: "No data received" });
+  }
+
+  const [name, comment] = entries[0];
+
+  if (!name || !comment) {
+    return res.status(400).json({ error: "Invalid data received" });
+  }
+
+  fs.readFile("comments.json", "utf-8", (err, data) => {
+    if (err) {
+      return res.status(500).send("Failed to read data file.");
+    }
+
+    let json;
+    try {
+      json = JSON.parse(data);
+    } catch (parseError) {
+      return res.status(500).send("Invalid JSON data.");
+    }
+
+    if (name in json) {
+      json[name].push(comment);
+    } else {
+      json[name] = [comment];
+    }
+
+    fs.writeFile("comments.json", JSON.stringify(json, null, 2), (err) => {
+      if (err) {
+        return res.status(500).send("Failed to write data.");
+      }
+      res.json(json[name]);
+    });
+  });
+});
+
+app.post("/getcomment", (req, res) => {
+  const { name } = req.body; 
+
+  if (!name) {
+    return res.status(400).send("Name parameter is required.");
+  }
+
+  fs.readFile("comments.json", "utf-8", (err, data) => {
+    if (err) {
+      return res.status(500).send("Failed to read data file.");
+    }
+
+    let json;
+    try {
+      json = JSON.parse(data);
+    } catch (parseError) {
+      return res.status(500).send("Invalid JSON data.");
+    }
+
+    const comment = json[name];
+    if (!comment) {
+      return res.status(404).send("Comment not found.");
+    }
+
+    res.json(comment);
+  });
+});
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });

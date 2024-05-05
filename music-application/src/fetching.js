@@ -34,3 +34,43 @@ export async function FetchingLogin(information) {
     console.error(error.message || "failed to fetch");
   }
 }
+
+export async function FetchingComments(info) {
+  try {
+    const response = await fetch("http://localhost:3000/comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(info),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to send comment");
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error.message || "failed to fetch");
+  }
+}
+export async function FetchingGetComments(name) {
+  try {
+    const response = await fetch("http://localhost:3000/getcomment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({name: name}),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to get comment");
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error.message || "Failed to fetch comments");
+  }
+}
+
