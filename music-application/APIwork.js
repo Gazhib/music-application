@@ -1,6 +1,6 @@
 const APIController = (function () {
-  const clientId = "";
-  const clientSecret = "";
+  const clientId = "e6bfcd4e411943bdb960014f6cceead1";
+  const clientSecret = "f83e96d8e5ef493e81cba36ab7bc3814";
 
   const _getToken = async () => {
     const result = await fetch("https://accounts.spotify.com/api/token", {
@@ -17,13 +17,10 @@ const APIController = (function () {
   };
 
   const _getGenres = async (token) => {
-    const result = await fetch(
-      `https://api.spotify.com/v1/browse/categories`,
-      {
-        method: "GET",
-        headers: { Authorization: "Bearer " + token },
-      }
-    );
+    const result = await fetch(`https://api.spotify.com/v1/browse/categories`, {
+      method: "GET",
+      headers: { Authorization: "Bearer " + token },
+    });
 
     const data = await result.json();
     return data.categories.items;
@@ -64,11 +61,23 @@ const APIController = (function () {
     return data;
   };
   const _getNewReleases = async (token) => {
-    const result = await fetch(`https://api.spotify.com/v1/browse/categories`, {
-      method: "GET",
-      headers: { Authorization: "Bearer " + token },
-    });
+    const result = await fetch(
+      `https://api.spotify.com/v1/browse/new-releases`,
+      {
+        method: "GET",
+        headers: { Authorization: "Bearer " + token },
+      }
+    );
 
+    const data = await result.json();
+    return data;
+  };
+
+  const _getAlbumTracks = async (token, albumEndPoint) => {
+    const result = await fetch(`${albumEndPoint}`, {
+      method: "GET",
+      headers: { Authorization: "Bearer" + token },
+    });
     const data = await result.json();
     return data;
   };
@@ -90,6 +99,9 @@ const APIController = (function () {
     },
     getNewReleases(token) {
       return _getNewReleases(token);
+    },
+    getAlbumTracks(token, albumEndPoint) {
+      return _getAlbumTracks(token, albumEndPoint);
     },
   };
 })();

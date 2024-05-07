@@ -19,10 +19,11 @@ body {
   cursor: pointer;
 }
 
-.backButton:hover{
+.backButton:hover {
   background-color: #212121;
 }
-.backButton span{
+
+.backButton span {
   margin-left: 20px;
 }
 
@@ -298,12 +299,37 @@ body {
 
 /* NewsPage */
 .NewsPage {
-  background-color: #1f1f1f;
+  position: relative;
   display: flex;
-  display: flex;
-  margin: 100px;
-  margin-left: 175px;
+  flex-direction: column;
+  margin: 100px 40px 0 130px;
+  height: 100%;
   transition: 0.4s;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.AlbumsContainer {
+  position: absolute;
+  background-color: #1f1f1f;
+  padding: 30px;
+  margin-top: 300px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+  list-style: none;
+  text-align: center;
+}
+
+.AlbumsContainer button {
+  background-color: #2D2D2D;
+  border: none;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .NewsPage.side {
@@ -371,7 +397,29 @@ a {
   }
 }
 
-
+/* AlbumsTrackPage */
+.AlbumTrackPage{
+  position: relative;
+  display: grid;
+  grid-template-columns: auto;
+  margin: 100px 40px 0 130px;
+  height: 100%;
+  transition: 0.4s;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+.AlbumTracksContainer{
+  position: absolute;
+  background-color: #1f1f1f;
+  padding: 20px;
+  margin-top: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  width: 100%;
+}
 /* SearchPage */
 
 .SearchPage {
@@ -436,7 +484,7 @@ a {
 
 
 
-/* GenrePage */
+/* CategoriesPage */
 .GenrePage {
   position: relative;
   display: flex;
@@ -495,12 +543,14 @@ a {
   width: 100%;
   text-align: center;
 }
-.playlistName{
+
+.playlistName {
   background-color: #1f1f1f;
   line-height: 0px;
   border-radius: 10px;
   font-size: 70px;
 }
+
 .PlaylistContainer {
   position: absolute;
   background-color: #1f1f1f;
@@ -551,14 +601,22 @@ a {
   width: 350px;
   height: 350px;
 }
-.backContainer{
+.coverContainer.album{
+  margin-top: 50px;
+}
+.coverContainer.album img{
+  margin-top: 20px;
+}
+
+.backContainer {
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
 }
-.backButton.music{
-  
+
+.backButton.music {
+
   width: 12%;
   height: 50px;
   border-radius: 20px;
@@ -568,6 +626,7 @@ a {
   font-size: 20px;
   cursor: pointer;
 }
+
 .MusicPage img {
   margin-top: 15px;
   margin-left: 15px;
