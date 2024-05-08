@@ -15,10 +15,11 @@ This project is a music application project which used the Spotify API to search
 Process and Challenges  
 </h1> 
 
-While developing this project, I had to quickly learn backend within a week, and at the same time creating the frontend logic. I had challenges like:
+While developing this project, I had to quickly learn backend within a week, and at the same time create the frontend logic. I had challenges like:
 - Implementing basic backend functionalities without secure crypting or hashing the passwords and emails.
   
 - The inability to create reusable page components due to slight variations among pages.
+  
 However:
 - Utilizing Redux and Redux Toolkit to manage API tokens and eliminate prop drilling.
   
@@ -61,13 +62,16 @@ Assign your copied Client ID and Client Secret to the respective variables.
 
 <h1>2. Node.js and installing dependencies</h1>
 <h2>Install Node.js and npm</h2>
-Ensure Node.js and npm are installed:
+First of all make sure to install nodejs, or if you already do have it, make sure its version is newer than 14.8.0.
+To check the version:
 
 ```
-npm install -g npm
+node -v
 ```
 
-If you do not have them, install or update it.
+Then install nodejs on official website, run the installer and finish installing it.
+
+or update it.
 After installing nodejs. Install the npm and nvm:
 npm:
 
@@ -99,6 +103,7 @@ node app.js
 </h2>
 
 ```
+cd music-application
 npm install
 ```
 
@@ -113,9 +118,15 @@ npm install react-rating
 
 <h2>Run localhost</h2>
 In order to see the result of the project, run in terminal:
+if you are not in ..../music-application/music-application
+run:
 
 ```
 cd music application
+```
+Then:
+
+```
 npm run dev
 ```
 
