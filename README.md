@@ -1,5 +1,5 @@
 <h1>About Project</h1>
-This project is a music application using the Spotify API to search for albums, playlists, and tracks. It has features like:
+This project is a music application project which used the Spotify API to search for albums, playlists, and tracks and have access to them. It has features like:
 
 - A News Page showcasing new albums.  
 
@@ -26,7 +26,8 @@ However:
 
 
 
-<h1>How to run? 1. Setting Up Spotify API Access</h1>
+<h1>How to run? </h1>
+<h1>1. Setting Up Spotify API Access</h1>
 To use the Spotify API, you need to register your application. Follow these steps to get your clientId and clientSecret:
 
 Or for nfactorial I left credentials for some time, then I will delete it
@@ -66,9 +67,9 @@ Ensure Node.js and npm are installed:
 npm install -g npm
 ```
 
-Then install or update it.
+If you do not have them, install or update it.
 After installing nodejs. Install the npm and nvm:
-npm update:
+npm:
 
 ```
 npm install -g npm
@@ -93,10 +94,8 @@ cd backend
 node app.js
 ```
 
-in second terminal run:
-
 <h2>
-  To install main dependencies, in terminal run
+  To install main dependencies, in new second terminal run
 </h2>
 
 ```
