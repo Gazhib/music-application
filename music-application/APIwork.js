@@ -1,6 +1,6 @@
 const APIController = (function () {
-  const clientId = "e6bfcd4e411943bdb960014f6cceead1";
-  const clientSecret = "f83e96d8e5ef493e81cba36ab7bc3814";
+  const clientId = "9b776d3ad76041a4af59e3340c2df236";
+  const clientSecret = "88f77ca615ef40d3922500094962799c";
 
   const _getToken = async () => {
     const result = await fetch("https://accounts.spotify.com/api/token", {
@@ -76,8 +76,19 @@ const APIController = (function () {
   const _getAlbumTracks = async (token, albumEndPoint) => {
     const result = await fetch(`${albumEndPoint}`, {
       method: "GET",
-      headers: { Authorization: "Bearer" + token },
+      headers: { Authorization: "Bearer " + token },
     });
+    const data = await result.json();
+    return data;
+  };
+  const _searchAlbums = async (token, name, type) => {
+    const result = await fetch(
+      `https://api.spotify.com/v1/search?q=${name}&type=${type}`,
+      {
+        method: "GET",
+        headers: { Authorization: "Bearer " + token },
+      }
+    );
     const data = await result.json();
     return data;
   };
@@ -102,6 +113,9 @@ const APIController = (function () {
     },
     getAlbumTracks(token, albumEndPoint) {
       return _getAlbumTracks(token, albumEndPoint);
+    },
+    searchAlbums(token, name, type) {
+      return _searchAlbums(token, name, type);
     },
   };
 })();

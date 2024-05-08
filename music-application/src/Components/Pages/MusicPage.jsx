@@ -22,9 +22,7 @@ export default function MusicPage() {
     <div className="MusicPage">
       <div className="backContainer">
         <div className="coverContainer">
-          <Fade>
-            <img src={track.album.images[0].url} />
-          </Fade>
+          <img src={track.album.images[0].url} />
         </div>
         <button onClick={goBack} className="backButton music">
           <img className="backIcon" src={backIcon} />

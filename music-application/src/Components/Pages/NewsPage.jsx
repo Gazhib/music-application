@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { Fade } from "react-awesome-reveal";
 import { useSelector } from "react-redux";
@@ -7,13 +8,12 @@ import APIController from "../../../APIwork";
 
 export default function NewsPage() {
   const isSideBar = useSelector((state) => state.ui.sideBar);
+  const title = "New Releases";
   const [releases, setReleases] = useState([]);
   const [token, setToken] = useState();
   const dispatch = useDispatch();
-
   async function getNewReleases(token) {
     const getReleases = await APIController.getNewReleases(token);
-    console.log(getReleases.albums.items);
     setReleases(getReleases.albums.items);
   }
 
@@ -37,8 +37,11 @@ export default function NewsPage() {
   useEffect(() => {
     async function initialize() {
       const token = await getNewToken();
+
       setToken(token);
-      getNewReleases(token);
+      if (releases.length === 0) {
+        getNewReleases(token);
+      }
     }
 
     initialize();
@@ -46,13 +49,11 @@ export default function NewsPage() {
 
   return (
     <div className={`NewsPage ${isSideBar ? "side" : ""}`}>
-      <div className="playlistName">
-        <p className="name">New Albums</p>
-      </div>
-      <Fade>
-        <ul className="AlbumsContainer">
-          {releases &&
-            releases.map((album) => {
+      <div className="playlistName">{title}</div>
+      <div>
+        <Fade>
+          <ul className="AlbumsContainer">
+            {releases.map((album) => {
               return (
                 <li key={album.id}>
                   <button
@@ -64,8 +65,9 @@ export default function NewsPage() {
                 </li>
               );
             })}
-        </ul>
-      </Fade>
+          </ul>
+        </Fade>
+      </div>
     </div>
   );
 }

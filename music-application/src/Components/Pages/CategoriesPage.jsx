@@ -11,37 +11,39 @@ export default function CategoriesPage() {
   async function handleChoosing(tracksEndPoint, playlistName) {
     const tracks = await APIController.getTracks(token, tracksEndPoint);
     dispatch(apiActions.acquireTracks(tracks));
-    dispatch(apiActions.acquireTracksName(playlistName))
+    dispatch(apiActions.acquireTracksName(playlistName));
     dispatch(pageActions.changePage("playlist"));
   }
 
-  function goBack(){
-    dispatch(pageActions.changePage("search"))
+  function goBack() {
+    dispatch(pageActions.changePage("search"));
   }
 
   return (
     <div className="GenrePage">
-      <div className="genreName">
-        <p className="name">{genreName}</p>
+      <div className="genreName">{genreName}</div>
+      <div>
+        <button onClick={goBack} className="backButton">
+          <img className="backIcon" src={backIcon} />
+          <span>Back</span>
+        </button>
+        <Fade>
+          <ul className="PlaylistList">
+            {playlists.map((playlist, index) => {
+              return (
+                <li key={`${playlist.id}-${index}`}>
+                  <button
+                    onClick={() => handleChoosing(playlist.href, playlist.name)}
+                  >
+                    <img src={playlist.images[0].url} />
+                    <h3>{playlist.name}</h3>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </Fade>
       </div>
-      <button onClick={goBack} className="backButton">
-        <img className="backIcon" src={backIcon} />
-        <span>Back</span>
-      </button>
-      <Fade>
-        <ul className="PlaylistList">
-          {playlists.map((playlist, index) => {
-            return (
-              <li key={`${playlist.id}-${index}`}>
-                <button onClick={() => handleChoosing(playlist.href, playlist.name)}>
-                  <img src={playlist.images[0].url} />
-                  <h3>{playlist.name}</h3>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </Fade>
     </div>
   );
 }

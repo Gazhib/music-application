@@ -5,7 +5,7 @@ import { pageActions, apiActions } from "../../store";
 import APIController from "../../../APIwork";
 export default function PlaylistPage() {
   const playlist = useSelector((state) => state.api.tracks);
-  console.log(playlist)
+  console.log(playlist);
   const token = useSelector((state) => state.api.token);
   const playlistName = useSelector((state) => state.api.tracksName);
   const dispatch = useDispatch();
@@ -20,28 +20,27 @@ export default function PlaylistPage() {
   }
   return (
     <div className="PlaylistPage">
-      <div className="playlistName">
-        <p className="name">{playlistName}</p>
+      <div className="playlistName">{playlistName}</div>
+      <div>
+        <button onClick={goBack} className="backButton">
+          <img className="backIcon" src={backIcon} />
+          <span>Back</span>
+        </button>
+        <Fade>
+          <ul className="PlaylistContainer">
+            {playlist.tracks.items.map((track) => {
+              return (
+                <li key={track.track.id}>
+                  <button onClick={() => handleChoosing(track.track.href)}>
+                    <img src={track.track.album.images[0].url} />
+                    <p>{track.track.name}</p>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </Fade>
       </div>
-      <div className="imageContainer"></div>
-      <button onClick={goBack} className="backButton">
-        <img className="backIcon" src={backIcon} />
-        <span>Back</span>
-      </button>
-      <Fade>
-        <ul className="PlaylistContainer">
-          {playlist.tracks.items.map((track) => {
-            return (
-              <li key={track.track.id}>
-                <button onClick={() => handleChoosing(track.track.href)}>
-                  <img src={track.track.album.images[0].url} />
-                  <p>{track.track.name}</p>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </Fade>
     </div>
   );
 }

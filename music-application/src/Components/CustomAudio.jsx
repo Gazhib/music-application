@@ -41,23 +41,27 @@ export default function CustomAudio({ audioUrl }) {
   return (
     <div className="audioPlayer">
       <div className="custom-audio-player">
-        <button className="play-pause" onClick={playPause}>
-          {isPlaying ? (
-            <img className="play-pause-icon" src={pauseIcon} />
-          ) : (
-            <img className="play-pause-icon" src={playIcon} />
-          )}
-        </button>
-        <input
-          type="range"
-          className="seek-bar"
-          value={time}
-          max={duration}
-          readOnly
-        />
-        <span className="current-time">{formattedTime}</span> /{" "}
-        <span className="duration">{`0:${Math.floor(duration)}`}</span>
-        <audio ref={audioRef} className="audio" src={audioUrl}></audio>
+        <div className="playButton">
+          <button className="play-pause" onClick={playPause}>
+            {isPlaying ? (
+              <img className="play-pause-icon" src={pauseIcon} />
+            ) : (
+              <img className="play-pause-icon" src={playIcon} />
+            )}
+          </button>
+        </div>
+        <div className="seekBarButton">
+          <input
+            type="range"
+            className="seek-bar"
+            value={time}
+            max={duration}
+            readOnly
+          />
+          <span className="current-time">{formattedTime}</span> /{" "}
+          <span className="duration">{`0:${Math.floor(duration)}`}</span>
+          <audio ref={audioRef} className="audio" src={audioUrl}></audio>
+        </div>
       </div>
     </div>
   );

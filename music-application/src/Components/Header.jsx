@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from "react-redux";
-import { uiActions, authActions } from "../store/index";
+import { uiActions, authActions, pageActions } from "../store/index";
 
 import logoutIcon from "../assets/icons/logout.png";
 import menuIcon from "../assets/icons/menu.png";
@@ -14,16 +14,20 @@ export default function Header({ registration }) {
     dispatch(uiActions.sideBar());
   }
 
+  function handleHome() {
+    dispatch(pageActions.changePage("home"));
+  }
+
   function handleLogOut() {
     dispatch(authActions.changeAuth());
   }
   return (
-    <>
+    <div>
       <header className="header">
         <button onClick={handleSidebar} className="button">
           <img className="icon" src={menuIcon} />
         </button>
-        <button className="companyButton">
+        <button onClick={handleHome} className="companyButton">
           SONG<span className="sphere">SPHERE</span>
         </button>
         {isAuth ? (
@@ -45,6 +49,6 @@ export default function Header({ registration }) {
           </button>
         )}
       </header>
-    </>
+    </div>
   );
 }

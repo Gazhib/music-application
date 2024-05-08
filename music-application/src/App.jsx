@@ -33,9 +33,13 @@ function App() {
 
   return (
     <div className="App">
-      {text}
-      <Header registration={registration} />
-      <Sidebar />
+      <div>
+        <Sidebar />
+      </div>
+      <div className="SecondContainer">
+        <Header registration={registration} />
+        {text}
+      </div>
       <RegistrationModal ref={regModal} />
     </div>
   );
